@@ -1,56 +1,63 @@
-# Welcome to your Expo app 👋
+# bBash Starter Kits
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+**bKash Clone App in React Native (Expo) — বাংলা Full Course**
 
-## Get started
+এই repo-তে course-এর প্রতিটা part-এর শেষে code যেমন থাকে, ঠিক তেমন আছে। Video দেখতে দেখতে আটকে গেলে, বা মাঝখান থেকে শুরু করতে চাইলে, ওই part-এর branch নিয়ে নিন।
 
-1. Install dependencies
+- ▶ **পুরো playlist:** https://www.youtube.com/watch?v=bKl-W8o-OAk&list=PLe17jIbpkmaA
+- 🎬 **Course-এর ভূমিকা (trailer):** https://www.youtube.com/watch?v=bKl-W8o-OAk
+- 🌐 **আমার বাকি কাজ:** https://reactbd.com · YouTube [@reactbdbangla](https://www.youtube.com/@reactbdbangla)
 
-   ```bash
-   npm install
-   ```
+## Branch কোনটা
 
-2. Start the app
+প্রতিটা part একটা branch। `main`-এ সবসময় সর্বশেষ part-এর code।
 
-   ```bash
-   npx expo start
-   ```
+| Branch                          | Part                                    | এই branch-এ যা আছে                                                                                                                                                                                    |
+| ------------------------------- | --------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| [`part-01`](../../tree/part-01) | Part 1 · খালি folder থেকে প্রথম Expo app | Expo SDK 58 project (Expo Router, TypeScript), template reset, `app.json`-এ bBash-এর পরিচয়, NativeWind 4 + Tailwind CSS 3, Prettier + Tailwind plugin, ESLint, আর `className` দিয়ে গোলাপি প্রথম screen |
 
-In the output, you'll find options to open the app in a
+পরের part-গুলো আসার সাথে সাথে এখানে নতুন branch যোগ হবে।
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+## চালাতে যা লাগবে
 
-You can start developing by editing the files inside the **src/app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
+- **Node.js** LTS (https://nodejs.org/en/download): `node -v` দিয়ে check করুন
+- **Git**: `git --version`
+- **VS Code** আর **Expo Tools** extension
+- App চালানোর একটা জায়গা: Mac-এ iOS Simulator (Xcode), Windows/Linux-এ Android Studio emulator, browser, অথবা phone-এ **Expo Go** (SDK 58 চালাতে পারে এমন version)
 
-## Get a fresh project
-
-When you're ready, run:
+## শুরু করুন
 
 ```bash
-npm run reset-project
+git clone https://github.com/noorjsdivs/bbash-starter-kits.git bbash-wallet
+cd bbash-wallet
+git checkout part-01
+npm install
+npx expo start
 ```
 
-This command will move the starter code to the **example** directory and create a blank **src/app** directory where you can start developing.
+Terminal-এ `i` চাপলে iOS Simulator, `a` চাপলে Android emulator, `w` চাপলে browser। Phone-এ Expo Go দিয়ে QR code scan করুন।
 
-### Other setup steps
+## প্রতিটা part শেষে দুইটা check
 
-- To set up ESLint for linting, run `npx expo lint`, or follow our guide on ["Using ESLint and Prettier"](https://docs.expo.dev/guides/using-eslint/)
-- If you'd like to set up unit testing, follow our guide on ["Unit Testing with Jest"](https://docs.expo.dev/develop/unit-testing/)
-- Learn more about the TypeScript setup in this template in our guide on ["Using TypeScript"](https://docs.expo.dev/guides/typescript/)
+```bash
+npx tsc --noEmit   # TypeScript: কোন output নেই মানে কোন error নেই
+npx expo lint      # ESLint: Expo-র নিয়মে
+```
 
-## Learn more
+## `className` কাজ না করলে
 
-To learn more about developing your project with Expo, look at the following resources:
+NativeWind চারটা file-এর উপর দাঁড়িয়ে থাকে: `tailwind.config.ts`, `src/global.css`, `babel.config.js`, `metro.config.js`। Style না এলে তিনটা জিনিস দেখুন:
 
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
+1. `src/app/_layout.tsx`-এর একদম উপরে `import '@/global.css';` আছে কিনা
+2. `metro.config.js`-এ `withNativeWind(config, { input: './src/global.css' })`-এর path ঠিক আছে কিনা
+3. `babel.config.js`-এ `jsxImportSource: 'nativewind'` আছে কিনা
 
-## Join the community
+তারপর cache মুছে আবার চালান: `npx expo start --clear`
 
-Join our community of developers creating universal apps.
+## Stack
 
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+Expo SDK 58 · React Native 0.88 · React 19 · TypeScript 6 · Expo Router · NativeWind 4 · Tailwind CSS 3.4 · Prettier · ESLint (`eslint-config-expo`)
+
+---
+
+⚠️ bBash শেখার জন্য বানানো একটা clone। এটা bKash-এর official app না, আর bKash-এর সাথে এর কোন সম্পর্ক নেই। সব নাম, নম্বর আর লেনদেন dummy data; কোন আসল টাকা নেই।
